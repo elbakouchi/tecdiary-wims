@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+$DATABASE_URL = parse_url(env('DATABASE_URL', 'postgres://pftmjvbyozfron:e513187dad7faf53882141769f99f51d43282b8b0148671b7d26064bfb6328ac@ec2-54-209-187-69.compute-1.amazonaws.com:5432/deuv3dfk45impl'));
+
 return [
 
     /*
@@ -91,7 +93,7 @@ return [
             'schema' => 'public',
             'sslmode' => 'require',
         ],
-        
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
