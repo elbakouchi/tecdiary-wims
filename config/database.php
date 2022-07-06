@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Str;
 
-$DATABASE_URL = parse_url(env('DATABASE_URL', 'postgres://pftmjvbyozfron:e513187dad7faf53882141769f99f51d43282b8b0148671b7d26064bfb6328ac@ec2-54-209-187-69.compute-1.amazonaws.com:5432/deuv3dfk45impl'));
-
+DATABASE_URL = parse_url(env('DATABASE_URL', 'postgres://pftmjvbyozfron:e513187dad7faf53882141769f99f51d43282b8b0148671b7d26064bfb6328ac@ec2-54-209-187-69.compute-1.amazonaws.com:5432/deuv3dfk45impl'));
+$DATABASE_URL = parse_url(env("CLEARDB_DATABASE_URL"), 'mysql://b992ae83e6eb30:839ca4ec@us-cdbr-east-06.cleardb.net/heroku_34ef08290ced3b8');
 return [
 
     /*
@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-
+        /*
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
@@ -63,7 +63,7 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
-        ],
+        ],*/
         /*
         'pgsql' => [
             'driver' => 'pgsql',
@@ -80,7 +80,25 @@ return [
             'sslmode' => 'prefer',
         ],
         */
-
+        'mysql' => [
+            'driver' => 'mysql',
+            'url' => env('CLEARDB_DATABASE_SHORT_URL', 'mysql://b992ae83e6eb30:839ca4ec@us-cdbr-east-06.cleardb.net/heroku_34ef08290ced3b8'),
+            'host' => env('CLEARDB_DATABASE_HOST', 'us-cdbr-east-06.cleardb.net'),
+            'port' => env('CLEARDB_PORT', '3306'),
+            'database' => env('CLEARDB_DATABASE', 'heroku_34ef08290ced3b8'),
+            'username' => env('CLEARDB_USERNAME', 'b992ae83e6eb30'),
+            'password' => env('CLEARDB_PASSWORD', '839ca4ec'),
+            'unix_socket' => env('CLEARDB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => 'wims_',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => $DATABASE_URL["host"],
@@ -89,6 +107,7 @@ return [
             'username' => $DATABASE_URL["user"],
             'password' => $DATABASE_URL["pass"],
             'charset' => 'utf8',
+            
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'require',
