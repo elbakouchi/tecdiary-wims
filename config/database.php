@@ -4,7 +4,7 @@ use Illuminate\Support\Str;
 
 $DATABASE_URL = parse_url(env('DATABASE_URL', 'postgres://pftmjvbyozfron:e513187dad7faf53882141769f99f51d43282b8b0148671b7d26064bfb6328ac@ec2-54-209-187-69.compute-1.amazonaws.com:5432/deuv3dfk45impl'));
 $CLEARDB_DATABASE_URL = parse_url(env("CLEARDB_DATABASE_URL", 'mysql://b992ae83e6eb30:839ca4ec@us-cdbr-east-06.cleardb.net/heroku_34ef08290ced3b8'));
-$JAWSDB_DATABASE_URL = parse_url(env('JAWSDB_URL','mysql://ffef7curujxh7pqg:zm38mw2fcfk498aj@n4m3x5ti89xl6czh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qna2ye0ph7zpko6i')) 
+$JAWSDB_DATABASE_URL = parse_url(env('JAWSDB_URL','mysql://ffef7curujxh7pqg:zm38mw2fcfk498aj@n4m3x5ti89xl6czh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qna2ye0ph7zpko6i')) ;
 return [
 
     /*
