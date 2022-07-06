@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Str;
 
-DATABASE_URL = parse_url(env('DATABASE_URL', 'postgres://pftmjvbyozfron:e513187dad7faf53882141769f99f51d43282b8b0148671b7d26064bfb6328ac@ec2-54-209-187-69.compute-1.amazonaws.com:5432/deuv3dfk45impl'));
-$DATABASE_URL = parse_url(env("CLEARDB_DATABASE_URL"), 'mysql://b992ae83e6eb30:839ca4ec@us-cdbr-east-06.cleardb.net/heroku_34ef08290ced3b8');
+$DATABASE_URL = parse_url(env('DATABASE_URL', 'postgres://pftmjvbyozfron:e513187dad7faf53882141769f99f51d43282b8b0148671b7d26064bfb6328ac@ec2-54-209-187-69.compute-1.amazonaws.com:5432/deuv3dfk45impl'));
+$CLEARDB_DATABASE_URL = parse_url(env("CLEARDB_DATABASE_URL"), 'mysql://b992ae83e6eb30:839ca4ec@us-cdbr-east-06.cleardb.net/heroku_34ef08290ced3b8');
 return [
 
     /*
