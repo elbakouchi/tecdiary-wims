@@ -4,7 +4,7 @@ use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
     Route::redirect('/dashboard', '/');
     Route::get('/language/{language}', [Controllers\AjaxController::class, 'language']);
     Route::get('/', [Controllers\DashboardController::class, 'index'])->name('dashboard');
@@ -68,7 +68,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Role Permissions
     Route::post('roles/{role}/permissions', [Controllers\RoleController::class, 'permissions'])->name('roles.permissions');
-});
+//});
 
 // Routes to run storage & migration commands
 Route::view('/notification', 'notification')->name('notification');
