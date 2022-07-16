@@ -460,5 +460,15 @@ const menus = [
     permissions: ['read-activity'],
     lang: { helper: null, main: 'Activity' },
   },
+  {
+    name: 'inventory',
+    route: 'activity',
+    icon: 'gmdi-inventory-o',
+    hidden: false,
+    heading: 'Misc',
+    sub_menu: false,
+    permissions: ['read-activity'],
+    lang: { helper: null, main: 'Activity' },
+  },
 ];
 export default menus;
