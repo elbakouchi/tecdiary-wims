@@ -107,11 +107,11 @@ const menus = [
   {
     name: 'inventory',
     route: 'inventory',
-    icon: 'collection',
+    icon: 'printer',
     hidden: false,
     heading: null,
     sub_menu: false,
-    permissions: ['read-activity'],
+    permissions: ['read-items'],
     lang: { helper: null, main: 'Inventory' },
   },
   {
