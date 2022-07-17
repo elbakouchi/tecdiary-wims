@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
@@ -68,6 +69,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Role Permissions
     Route::post('roles/{role}/permissions', [Controllers\RoleController::class, 'permissions'])->name('roles.permissions');
+    Route::post('/inventory', InventoryController::class)->name('inventory');
 });
 
 // Routes to run storage & migration commands
