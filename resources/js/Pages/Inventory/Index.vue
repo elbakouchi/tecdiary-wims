@@ -7,7 +7,35 @@
       </tec-section-title>
 
       <div class="mb-6 flex justify-between items-center print:hidden">
-        <search-filter :dropdown="false" v-model="form.search" class="w-full max-w-md mr-4" @reset="reset" />
+        <!--search-filter :dropdown="false" v-model="form.search" class="w-full max-w-md mr-4" @reset="reset" /-->
+        <search-filter v-model="form.search" class="w-full max-w-md mr-4" @reset="reset">
+          <auto-complete
+            id="warehouse"
+            position="left"
+            :label="$t('Warehouse')"
+            v-model="form.warehouse"
+            class="mt-1 w-full form-select"
+            :suggestions="[
+              { label: $t('Not Trashed'), value: null },
+              { label: $t('With Trashed'), value: 'with' },
+              { label: $t('Only Trashed'), value: 'only' },
+            ]"
+          >
+          </auto-complete>
+          <auto-complete
+            id="contact"
+            position="left"
+            :label="$t('contact')"
+            v-model="form.contact"
+            class="mt-1 w-full form-select"
+            :suggestions="[
+              { label: $t('All'), value: null },
+              { label: $t('Yes'), value: 'yes' },
+              { label: $t('No'), value: 'no' },
+            ]"
+          >
+          </auto-complete>
+        </search-filter>
       </div>
       <div class="bg-white -mx-4 md:mx-0 md:rounded-md shadow overflow-x-auto">
         <table class="w-full whitespace-nowrap">
