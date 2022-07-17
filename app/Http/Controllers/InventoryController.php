@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ItemCollection;
+use App\Http\Resources\WarehouseCollection;
+use App\Models\Item;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class InventoryController extends Controller
 {
@@ -14,6 +19,10 @@ class InventoryController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        return Inertia::render('Inventory/Index', [
+            'filters'    => $request->all('search'),
+            'warehouses' => new WarehouseCollection(Warehouse::filter($request->only('search'))->orderByDesc('id')->paginate()),
+            'items' => new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate()),
+        ]);
     }
 }
