@@ -15,7 +15,7 @@
             <th class="px-6 pt-6 pb-4">{{ $t('SKU') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $t('Code') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $t('Name') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $t('Rack') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Rack location') }}</th>
           </tr>
           <tr
             :key="item.id"
