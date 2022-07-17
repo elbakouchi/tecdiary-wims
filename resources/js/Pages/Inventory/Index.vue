@@ -12,36 +12,36 @@
       <div class="bg-white -mx-4 md:mx-0 md:rounded-md shadow overflow-x-auto">
         <table class="w-full whitespace-nowrap">
           <tr class="text-left font-bold">
-            <th class="px-6 pt-6 pb-4">{{ $t('Created at') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('SKU') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Code') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $t('Name') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $t('Description') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $t('By') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Rack') }}</th>
           </tr>
           <tr
-            :key="warehouse.id"
-            @click="showDetails(warehouse)"
-            v-for="warehouse in warehouses.data"
+            :key="item.id"
+            @click="showDetails(item)"
+            v-for="item in items.data"
             class="hover:bg-gray-100 focus-within:bg-gray-100 cursor-pointer"
           >
             <td class="border-t px-6 py-4">
-              {{ $datetime(warehouse.created_at) }}
+              {{ $datetime(item.sku) }}
             </td>
             <td class="border-t px-6 py-4">
-              {{ warehouse.log_name }}
+              {{ item.code }}
             </td>
             <td class="border-t px-6 py-4">
-              {{ warehouse.description }}
+              {{ item.name }}
             </td>
             <td class="border-t px-6 py-4">
-              {{ warehouse.causer ? warehouse.causer.name : '' }}
+              {{ item.rack_location }}
             </td>
           </tr>
-          <tr v-if="warehouses.data.length === 0">
+          <tr v-if="items.data.length === 0">
             <td class="border-t px-6 py-4" colspan="4">{{ $t('There is no data to display.') }}</td>
           </tr>
         </table>
       </div>
-      <pagination class="mt-6" :meta="warehouses.meta" :links="warehouses.links" />
+      <pagination class="mt-6" :meta="items.meta" :links="items.links" />
     </div>
 
     <!-- warehouse Details Modal -->
@@ -49,7 +49,7 @@
       <div class="px-6 py-4 print:px-0">
         <div class="flex items-center justify-between print:hidden">
           <div class="text-lg">
-            {{ $t('warehouse Details') }}
+            {{ $t('Items Details') }}
           </div>
           <button
             @click="hideDetails()"
@@ -71,21 +71,21 @@
           </button>
         </div>
 
-        <div v-if="warehouse" class="mt-4 p-4 bg-gray-100 -mx-6 -mb-6 md:rounded-b-lg">
+        <div v-if="item" class="mt-4 p-4 bg-gray-100 -mx-6 -mb-6 md:rounded-b-lg">
           <div class="bg-white -mx-4 md:mx-0 md:rounded-md shadow overflow-x-auto print:m-0">
             <table class="w-full my-4">
               <tr>
                 <td class="px-6 py-2 w-32 whitespace-nowrap">{{ $t('Subject Id') }}</td>
-                <td class="px-6 py-2">{{ warehouse.subject_id }}</td>
+                <td class="px-6 py-2">{{ item.subject_id }}</td>
               </tr>
               <tr>
                 <td class="bg-gray-50 px-6 py-2 w-32 whitespace-nowrap">{{ $t('Subject Type') }}</td>
-                <td class="bg-gray-50 px-6 py-2">{{ warehouse.subject_type }}</td>
+                <td class="bg-gray-50 px-6 py-2">{{ item.subject_type }}</td>
               </tr>
               <tr>
                 <td class="px-6 py-2 w-32 whitespace-nowrap">{{ $t('Properties') }}</td>
                 <td class="px-6 py-2">
-                  <pre class="text-sm font-mono tracking-wide">{{ warehouse.properties }}</pre>
+                  <pre class="text-sm font-mono tracking-wide">{{ item.properties }}</pre>
                 </td>
               </tr>
             </table>
@@ -147,12 +147,12 @@ export default {
   },
 
   methods: {
-    showDetails(warehouse) {
+    showDetails(item) {
       this.warehouse = warehouse;
       this.details = true;
     },
     hideDetails() {
-      this.warehouse = null;
+      this.item = null;
       this.details = false;
     },
     reset() {
