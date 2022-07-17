@@ -121,12 +121,12 @@ export default {
 
   props: {
     filters: Object,
-    warehouses: Object,
+    items: Object,
   },
 
   data() {
     return {
-      warehouse: null,
+      item: null,
       details: false,
       form: { search: this.filters.search },
     };
@@ -148,7 +148,7 @@ export default {
 
   methods: {
     showDetails(item) {
-      this.warehouse = warehouse;
+      this.item = item;
       this.details = true;
     },
     hideDetails() {
