@@ -69,7 +69,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Role Permissions
     Route::post('roles/{role}/permissions', [Controllers\RoleController::class, 'permissions'])->name('roles.permissions');
-    Route::post('/inventory', InventoryController::class)->name('inventory');
+    Route::get('/inventory', InventoryController::class)->name('inventory');
 });
 
 // Routes to run storage & migration commands
