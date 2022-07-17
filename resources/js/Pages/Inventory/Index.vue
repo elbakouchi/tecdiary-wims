@@ -24,7 +24,7 @@
             class="hover:bg-gray-100 focus-within:bg-gray-100 cursor-pointer"
           >
             <td class="border-t px-6 py-4">
-              {{ $datetime(item.sku) }}
+              {{ item.sku }}
             </td>
             <td class="border-t px-6 py-4">
               {{ item.code }}
