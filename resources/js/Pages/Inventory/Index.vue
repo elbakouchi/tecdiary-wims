@@ -129,6 +129,7 @@ import pickBy from 'lodash/pickBy';
 import throttle from 'lodash/throttle';
 import mapValues from 'lodash/mapValues';
 import Modal from '@/Jetstream/Modal.vue';
+import AutoComplete from '@/Shared/AutoComplete.vue';
 import TecButton from '@/Jetstream/Button.vue';
 import SelectInput from '@/Shared/SelectInput.vue';
 import Pagination from '@/Shared/Pagination.vue';
@@ -139,6 +140,7 @@ import TecSectionTitle from '@/Jetstream/SectionTitle.vue';
 export default {
   components: {
     Modal,
+    AutoComplete,
     TecButton,
     Pagination,
     AdminLayout,
