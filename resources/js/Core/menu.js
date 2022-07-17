@@ -74,6 +74,16 @@ const menus = [
     ],
   },
   {
+    name: 'inventory',
+    route: 'inventory',
+    icon: 'printer',
+    hidden: false,
+    heading: null,
+    sub_menu: false,
+    permissions: ['read-items'],
+    lang: { helper: null, main: 'Inventory' },
+  },
+  {
     name: 'adjustments',
     route: null,
     icon: 'adjustments',
@@ -103,16 +113,6 @@ const menus = [
         lang: { helper: 'create_x', main: 'Adjustment' },
       },
     ],
-  },
-  {
-    name: 'inventory',
-    route: 'inventory',
-    icon: 'printer',
-    hidden: false,
-    heading: null,
-    sub_menu: false,
-    permissions: ['read-items'],
-    lang: { helper: null, main: 'Inventory' },
   },
   {
     name: 'transfers',
