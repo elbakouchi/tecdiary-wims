@@ -15,7 +15,7 @@
             :label="$t('Warehouse')"
             v-model="form.warehouse"
             class="mt-1 w-full form-select"
-            :suggestions="route('warehouses.autocomplete')"
+            :suggestions="warehouses.data"
           >
           </auto-complete>
           <auto-complete
@@ -24,7 +24,7 @@
             :label="$t('contact')"
             v-model="form.contact"
             class="mt-1 w-full form-select"
-            :suggestions="route('contacts.autocomplete')"
+            :suggestions="contacts.data"
           >
           </auto-complete>
         </search-filter>
@@ -144,6 +144,8 @@ export default {
   props: {
     filters: Object,
     items: Object,
+    warehouses: Array,
+    contacts: Array
   },
 
   data() {
