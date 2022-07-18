@@ -15,11 +15,7 @@
             :label="$t('Warehouse')"
             v-model="form.warehouse"
             class="mt-1 w-full form-select"
-            :suggestions="[
-              { label: $t('Not Trashed'), value: null },
-              { label: $t('With Trashed'), value: 'with' },
-              { label: $t('Only Trashed'), value: 'only' },
-            ]"
+            :suggestions="route('warehouses.autocomplete')"
           >
           </auto-complete>
           <auto-complete
@@ -28,7 +24,7 @@
             :label="$t('contact')"
             v-model="form.contact"
             class="mt-1 w-full form-select"
-            :suggestions="warehouses"
+            :suggestions="route('contacts.autocomplete')"
           >
           </auto-complete>
         </search-filter>
