@@ -28,7 +28,7 @@ class InventoryController extends Controller
             'filters'    => $request->all('search'),
             'warehouses' => WarehouseAutoComplete::collection(Warehouse::all()),
             'contacts'=> ContactAutoComplete::collection(Contact::all()),
-            'checkins' => CheckinResource::collection(Checkin::where('warehouse_id', $request->only('warehouse'))->orWhere('contact_id',$request->only('contact'))),
+            'checkins' => CheckinResource::collection(Checkin::where('warehouse_id', $request->only('warehouse'))->orWhere('contact_id',$request->only('contact'))->get()),
             'items' => new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate()),
         ]);
     }
