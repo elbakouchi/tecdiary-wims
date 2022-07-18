@@ -22,7 +22,7 @@ class InventoryController extends Controller
     {
         return Inertia::render('Inventory/Index', [
             'filters'    => $request->all('search'),
-            'warehouses' => new WarehouseAutoComplete(Warehouse::filter($request->only('search'))->orderByDesc('id')->paginate()),
+            'warehouses' => new WarehouseAutoComplete(Warehouse::all()),
             'items' => new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate()),
         ]);
     }
