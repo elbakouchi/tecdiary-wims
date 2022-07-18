@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -69,7 +70,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Role Permissions
     Route::post('roles/{role}/permissions', [Controllers\RoleController::class, 'permissions'])->name('roles.permissions');
-    Route::get('/inventory', InventoryController::class)->name('inventory');
+    Route::get('/inventory', [InventoryController::class, 'inventory'])->name('inventory');
+    Route::get('/inventory/warehouses', [InventoryController::class, 'warehouses'])->name('warehouses.autocomplete');
+    Route::get('/inventory/contacts', [InventoryController::class,'contacts'])->name('contacts.autocomplete');
 });
 
 // Routes to run storage & migration commands
