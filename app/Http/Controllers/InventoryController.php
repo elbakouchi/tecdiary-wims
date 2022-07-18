@@ -26,7 +26,9 @@ class InventoryController extends Controller
     public function inventory(Request $request)
     {
 
-        $checkins = CheckinIdResource::collection(Checkin::with('items')->where('warehouse_id', $request->only('warehouse'))->orWhere('contact_id',$request->only('contact'))->get());
+        $checkins = CheckinResource::collection(Checkin::with('items')
+        ->where('warehouse_id', $request->only('warehouse'))
+        ->orWhere('contact_id',$request->only('contact'))->get());
         
         return Inertia::render('Inventory/Index', [
             'filters'    => $request->all('search'),
