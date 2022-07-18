@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CheckinResource;
 use App\Http\Resources\ContactAutoComplete;
 use App\Http\Resources\ItemCollection;
 use App\Http\Resources\WarehouseAutoComplete;
 use App\Http\Resources\WarehouseCollection;
+use App\Models\Checkin;
 use App\Models\Contact;
 use App\Models\Item;
 use App\Models\Warehouse;
@@ -26,6 +28,7 @@ class InventoryController extends Controller
             'filters'    => $request->all('search'),
             'warehouses' => WarehouseAutoComplete::collection(Warehouse::all()),
             'contacts'=> ContactAutoComplete::collection(Contact::all()),
+            'checkins' => CheckinResource::collection(Checkin::where('warehouse_id', $request->only('warehouse'))->orWhere('contact_id',$request->only('contact'))),
             'items' => new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate()),
         ]);
     }

@@ -145,7 +145,8 @@ export default {
     filters: Object,
     items: Object,
     warehouses: Array,
-    contacts: Array
+    contacts: Array,
+    checkins: Object,
   },
 
   data() {
