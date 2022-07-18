@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CheckinIdResource;
 use App\Http\Resources\CheckinResource;
 use App\Http\Resources\ContactAutoComplete;
 use App\Http\Resources\ItemCollection;
@@ -24,11 +25,14 @@ class InventoryController extends Controller
      */
     public function inventory(Request $request)
     {
+
+        $checkins = CheckinIdResource::collection(Checkin::with('items')->where('warehouse_id', $request->only('warehouse'))->orWhere('contact_id',$request->only('contact'))->get());
+        
         return Inertia::render('Inventory/Index', [
             'filters'    => $request->all('search'),
             'warehouses' => WarehouseAutoComplete::collection(Warehouse::all()),
             'contacts'=> ContactAutoComplete::collection(Contact::all()),
-            'checkins' => CheckinResource::collection(Checkin::with('items')->where('warehouse_id', $request->only('warehouse'))->orWhere('contact_id',$request->only('contact'))->get()),
+            'checkins' => $checkins,
             'items' => new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate()),
         ]);
     }
