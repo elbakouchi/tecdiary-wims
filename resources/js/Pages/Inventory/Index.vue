@@ -15,7 +15,7 @@
             :label="$t('Warehouse')"
             v-model="form.warehouse"
             class="mt-1 w-full form-select"
-            :suggestions="warehouses.data"
+            :suggestions="warehouses"
           >
           </auto-complete>
           <auto-complete
@@ -24,7 +24,7 @@
             :label="$t('contact')"
             v-model="form.contact"
             class="mt-1 w-full form-select"
-            :suggestions="contacts.data"
+            :suggestions="contacts"
           >
           </auto-complete>
         </search-filter>
