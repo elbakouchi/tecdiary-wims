@@ -147,6 +147,7 @@ export default {
     warehouses: Array,
     contacts: Array,
     checkins: Object,
+    error: String
   },
 
   data() {
