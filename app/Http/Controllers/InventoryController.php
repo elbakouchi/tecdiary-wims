@@ -12,6 +12,7 @@ use App\Models\Checkin;
 use App\Models\Contact;
 use App\Models\Item;
 use App\Models\Warehouse;
+use Exception;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -25,17 +26,39 @@ class InventoryController extends Controller
      */
     public function inventory(Request $request)
     {
+        $items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->get());
+       
+        $error = ''; 
 
-        $checkins = CheckinResource::collection(Checkin::with('items')
-        ->where('warehouse_id', $request->only('warehouse'))
-        ->orWhere('contact_id',$request->only('contact'))->get());
-        
+
+
+        if($request->only('warehouse') || $request->only('contact')){
+            $checkins = CheckinResource::collection(Checkin::with('items')
+            ->where('warehouse_id', $request->only('warehouse'))
+            ->orWhere('contact_id',$request->only('contact'))
+            ->get());
+            try{
+
+               $items = $items->data->filter(function($value, $key) use ($checkins){
+                    $chekinItems = $checkins->items;
+                    foreach($chekinItems as $checkinItem){
+                      return $value->id == $checkinItem->item_id;
+                    }
+                });
+            }catch(Exception $e){
+                $error = $e;
+            }
+    
+            
+        }
+       
         return Inertia::render('Inventory/Index', [
             'filters'    => $request->all('search'),
             'warehouses' => WarehouseAutoComplete::collection(Warehouse::all()),
             'contacts'=> ContactAutoComplete::collection(Contact::all()),
             'checkins' => $checkins,
-            'items' => new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate()),
+            'items' => $items,
+            'error' => $error,
         ]);
     }
     /**
