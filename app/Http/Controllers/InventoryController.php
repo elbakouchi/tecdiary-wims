@@ -39,7 +39,7 @@ class InventoryController extends Controller
             ->orWhere('contact_id',$request->only('contact'))
             ->get());
 
-               $items = $items->data->filter(function($value, $key) use ($checkins){
+               $items = $items->filter(function($value, $key) use ($checkins){
                     $chekinItems = $checkins->items;
                     foreach($chekinItems as $checkinItem){
                       return $value->id == $checkinItem->item_id;
