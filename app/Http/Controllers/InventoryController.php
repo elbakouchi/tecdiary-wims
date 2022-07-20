@@ -33,11 +33,11 @@ class InventoryController extends Controller
 
 
         if($request->only('warehouse') || $request->only('contact')){
+            try{
             $checkins = CheckinResource::collection(Checkin::with('items')
             ->where('warehouse_id', $request->only('warehouse'))
             ->orWhere('contact_id',$request->only('contact'))
             ->get());
-            try{
 
                $items = $items->data->filter(function($value, $key) use ($checkins){
                     $chekinItems = $checkins->items;
