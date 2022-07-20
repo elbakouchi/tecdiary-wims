@@ -29,7 +29,7 @@ class InventoryController extends Controller
         $items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
        
         $error = ''; 
-
+        $checkins = null;
 
 
         if($request->only('warehouse') || $request->only('contact')){
