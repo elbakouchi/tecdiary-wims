@@ -46,7 +46,7 @@ class InventoryController extends Controller
                     }
                 });
             }catch(Exception $e){
-                $error = $e;
+                $error = $e->getMessage();
             }
     
             
