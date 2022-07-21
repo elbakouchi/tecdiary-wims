@@ -52,7 +52,7 @@ class InventoryController extends Controller
         }
        
         return Inertia::render('Inventory/Index', [
-            'filters'    => $request->all('search'),
+            'filters'    => $request->all('search','warehouse', 'contact'),
             'warehouses' => WarehouseAutoComplete::collection(Warehouse::all()),
             'contacts'=> ContactAutoComplete::collection(Contact::all()),
             'checkins' => $checkins,
