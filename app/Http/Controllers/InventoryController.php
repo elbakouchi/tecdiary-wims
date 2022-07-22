@@ -41,7 +41,7 @@ class InventoryController extends Controller
 
                $items = $items->filter(function($value, $key) use ($checkins){
                     foreach($checkins as $checkin){
-                      return $value->id == $checkin->item_id;
+                      return $value->id != $checkin->item_id;
                     }
                 });
             }catch(Exception $e){
