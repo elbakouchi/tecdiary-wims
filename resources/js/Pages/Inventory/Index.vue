@@ -154,7 +154,7 @@ export default {
     return {
       item: null,
       details: false,
-      form: { search: this.filters.search },
+      form: { search: this.filters.search, warehouse: this.filter.warehouse, contact: this.filters.contact},
     };
   },
 
