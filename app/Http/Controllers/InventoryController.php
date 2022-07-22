@@ -31,7 +31,7 @@ class InventoryController extends Controller
         $error = ''; 
         $checkins = null;
 
-
+        /*
         if($request->only('warehouse') || $request->only('contact')){
             try{
             $checkins = CheckinResource::collection(Checkin::with('items')
@@ -49,7 +49,7 @@ class InventoryController extends Controller
             }
     
             
-        }
+        }*/
        
         return Inertia::render('Inventory/Index', [
             'filters'    => $request->all('search','warehouse', 'contact'),
