@@ -26,7 +26,7 @@ class InventoryController extends Controller
      */
     public function inventory(Request $request)
     {
-        $items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
+        $items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->get());
        
         $error = ''; 
         $checkins = null;
