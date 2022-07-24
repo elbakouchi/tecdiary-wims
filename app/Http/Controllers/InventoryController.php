@@ -31,7 +31,7 @@ class InventoryController extends Controller
     {
         try{
             $filters = EloquentFilters::make([
-                new CheckinItemFilter($request->contact, $request->warehouse),
+                new CheckinItemFilter($request->only('contact'), $request->only('warehouse')),
                 //new CheckoutItemFilter($request->contact, $request->warehouse)
             ]);
             
