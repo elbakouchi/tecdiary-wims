@@ -29,17 +29,24 @@ class InventoryController extends Controller
      */
     public function inventory(Request $request)
     {
-        $filters = EloquentFilters::make([
-            new CheckinItemFilter($request->contact, $request->warehouse),
-            //new CheckoutItemFilter($request->contact, $request->warehouse)
-        ]);
+        try{
+            $filters = EloquentFilters::make([
+                new CheckinItemFilter($request->contact, $request->warehouse),
+                //new CheckoutItemFilter($request->contact, $request->warehouse)
+            ]);
+            
+            //$items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
+            
+            $items = new ItemCollection(Item::filter($filters));
+            $checkins = array('data'=>[]);
+            $error ="It's all good";
+            
+        }catch(Exception $e){
+            $items = array('data'=>[]);
+            $error = $e->getMessage(); 
+            $checkins = array('data'=>[]);
+        }
         
-        //$items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
-       
-        $items = new ItemCollection(Item::filter($filters));
-
-        $error = ''; 
-        $checkins = null;
 
        
         return Inertia::render('Inventory/Index', [
