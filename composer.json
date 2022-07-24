@@ -17,6 +17,7 @@
     "laravel/jetstream": "^2.6",
     "laravel/sanctum": "^2.14",
     "laravel/tinker": "^2.7",
+    "pricecurrent/laravel-eloquent-filters": "^0.1.2",
     "rap2hpoutre/fast-excel": "^3.2",
     "reinink/remember-query-strings": "^0.1.0",
     "robinvdvleuten/ulid": "^5.0",
