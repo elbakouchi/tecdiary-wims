@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\Models\CheckinItemFilter;
+use App\Filters\Models\CheckoutItemFilter;
 use App\Http\Resources\CheckinIdResource;
 use App\Http\Resources\CheckinResource;
 use App\Http\Resources\ContactAutoComplete;
@@ -15,6 +17,7 @@ use App\Models\Warehouse;
 use Exception;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
 
 class InventoryController extends Controller
 {
@@ -26,30 +29,18 @@ class InventoryController extends Controller
      */
     public function inventory(Request $request)
     {
-        $items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
+        $filters = EloquentFilters::make([
+            new CheckinItemFilter($request->contact, $request->warehouse),
+            //new CheckoutItemFilter($request->contact, $request->warehouse)
+        ]);
+        
+        //$items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
        
+        $items = new ItemCollection(Item::filter($filters));
+
         $error = ''; 
         $checkins = null;
 
-        /*
-        if($request->only('warehouse') || $request->only('contact')){
-            try{
-            $checkins = CheckinResource::collection(Checkin::with('items')
-            ->where('warehouse_id', $request->only('warehouse'))
-            ->orWhere('contact_id',$request->only('contact'))
-            ->get());
-
-               $items = $items->filter(function($value, $key) use ($checkins){
-                    foreach($checkins as $checkin){
-                      return $value->id != $checkin->item_id;
-                    }
-                });
-            }catch(Exception $e){
-                $error = $e->getMessage();
-            }
-    
-            
-        }*/
        
         return Inertia::render('Inventory/Index', [
             'filters'    => $request->all('search','warehouse', 'contact'),
