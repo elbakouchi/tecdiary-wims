@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Filters\Models\CheckinItemFilter;
 use App\Traits\ItemHelpers;
+use Illuminate\Database\Eloquent\Builder;
 
 class Item extends Model
 {
@@ -71,6 +73,11 @@ class Item extends Model
         $this->variations()->forceDelete();
         log_activity(__choice('delete_text', ['record' => 'Item']), $this, $this, 'Item');
         return $this->forceDelete();
+    }
+
+    public function scopeFilter(Builder $builder, $request)
+    {
+        return (new CheckinItemFilter($request))->filter($builder);
     }
 
     public function scopeFromCategory($query, $category)
