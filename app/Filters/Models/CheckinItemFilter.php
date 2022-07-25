@@ -2,6 +2,7 @@
 
 namespace App\Filters\Models;
 
+use App\Models\Account;
 use Illuminate\Database\Eloquent\Builder;
 use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
@@ -27,6 +28,6 @@ class CheckinItemFilter extends AbstractEloquentFilter
         else if(!is_null($this->contact))  $query->where('checkins.contact_id', '=', "$this->contact");
         else if(!is_null($this->warehouse))$query->where('checkins.warehaouse_id', '=', "$this->warehouse");
 
-        return $query->select('items.*');              
+        return $query->withoutGlobalScopes([Account::class]);              
     }
 }
