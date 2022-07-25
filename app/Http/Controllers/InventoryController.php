@@ -45,7 +45,7 @@ class InventoryController extends Controller
             
         }catch(Exception $e){
             $items = array('data'=>[]);
-            $error = $e->getMessage(); 
+            $error = "$e->getMessage(), $e->getFile(), $e->getLine()" ; 
             $checkins = array('data'=>[]);
         }
         
