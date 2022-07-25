@@ -77,7 +77,7 @@ class Item extends Model
 
     public function scopeFilter(Builder $builder, $request)
     {
-        return (new CheckinItemFilter($request->contact, $request->warehouse))->apply($builder);
+        return (new CheckinItemFilter($request->only('contact'), $request->only('warehouse')))->apply($builder);
     }
 
     public function scopeFromCategory($query, $category)
