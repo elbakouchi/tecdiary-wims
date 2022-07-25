@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Filters\Models\CheckinItemFilter;
 use App\Filters\Models\CheckoutItemFilter;
+use App\Filters\Models\ItemSearchFitler;
 use App\Http\Resources\CheckinIdResource;
 use App\Http\Resources\CheckinResource;
 use App\Http\Resources\ContactAutoComplete;
@@ -31,6 +32,7 @@ class InventoryController extends Controller
     {
         try{
             $filters = EloquentFilters::make([
+                new ItemSearchFitler($request->only('search')),
                 new CheckinItemFilter($request->only('contact'), $request->only('warehouse')),
                 //new CheckoutItemFilter($request->contact, $request->warehouse)
             ]);
