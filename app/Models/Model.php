@@ -68,9 +68,9 @@ class Model extends Eloquent
 
     protected static function booted()
     {
-        static::addGlobalScope('account', function (Builder $builder) {
-            $builder->where('account_id', getAccountId(1));
-        });
+        //static::addGlobalScope('account', function (Builder $builder) {
+        //    $builder->where('account_id', getAccountId(1));
+        //});
 
         if (static::$hasUser) {
             static::addGlobalScope('mine', function (Builder $builder) {
@@ -82,9 +82,9 @@ class Model extends Eloquent
         }
 
         static::creating(function ($model) {
-            if (!$model->account_id) {
-                $model->account_id = getAccountId();
-            }
+            //if (!$model->account_id) {
+            //    $model->account_id = getAccountId();
+           // }
             if ($model->setHash && !$model->hash) {
                 $model->hash = uuid4();
             }
