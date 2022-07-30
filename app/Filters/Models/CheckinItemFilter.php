@@ -24,9 +24,9 @@ class CheckinItemFilter extends AbstractEloquentFilter
                      ->join('checkins', 'checkins.id', '=', 'checkin_items.checkin_id');
         if(!is_null($this->contact) && !is_null($this->warehouse))
                      $query->where('checkins.contact_id', '=', "$this->contact")
-                     ->orWhere('checkins.warehaouse_id', '=', "$this->warehouse");
+                     ->orWhere('checkins.warehouse_id', '=', "$this->warehouse");
         else if(!is_null($this->contact))  $query->where('checkins.contact_id', '=', "$this->contact");
-        else if(!is_null($this->warehouse))$query->where('checkins.warehaouse_id', '=', "$this->warehouse");
+        else if(!is_null($this->warehouse))$query->where('checkins.warehouse_id', '=', "$this->warehouse");
 
         return $query->withoutGlobalScope('account');              
     }
