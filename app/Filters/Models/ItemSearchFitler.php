@@ -20,6 +20,7 @@ class ItemSearchFitler extends AbstractEloquentFilter
                    ->orWhere('sku', 'like', "$this->search%")
                    ->orWhere('details', 'like', "$this->search%")
                    ->orWhere('symbology', 'like', "$this->search%")
-                   ->orWhere('rack_location', 'like', "$this->search%");
+                   ->orWhere('rack_location', 'like', "$this->search%")
+                   ->orWhere('items.account_id', '=', '1');
     }
 }
