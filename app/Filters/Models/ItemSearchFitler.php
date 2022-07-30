@@ -16,11 +16,11 @@ class ItemSearchFitler extends AbstractEloquentFilter
 
     public function apply(Builder $query): Builder
     {
-        return $query->where('name', 'like', "$this->search%")
-                   ->orWhere('sku', 'like', "$this->search%")
-                   ->orWhere('details', 'like', "$this->search%")
-                   ->orWhere('symbology', 'like', "$this->search%")
-                   ->orWhere('rack_location', 'like', "$this->search%")
+        return $query->where('name', 'like', "%$this->search%")
+                   ->orWhere('sku', 'like', "%$this->search%")
+                   ->orWhere('details', 'like', "%$this->search%")
+                   ->orWhere('symbology', 'like', "%$this->search%")
+                   ->orWhere('rack_location', 'like', "%$this->search%")
                    //->orWhere('items.account_id', '=', 1)
                    ->withoutGlobalScope('account');
     }

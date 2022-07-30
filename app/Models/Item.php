@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Filters\Models\CheckinItemFilter;
 use App\Traits\ItemHelpers;
 use Illuminate\Database\Eloquent\Builder;
+use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
 
 class Item extends Model
 {
@@ -75,10 +76,16 @@ class Item extends Model
         return $this->forceDelete();
     }
 
-    public function scopeFilter2(Builder $builder, $request)
+
+    public function scopeFilter2(Builder $query, EloquentFilters $filters): Builder
     {
-        return (new CheckinItemFilter($request->only('contact'), $request->only('warehouse')))->apply($builder);
+        return $filters->apply($query);
     }
+
+   // public function scopeFilter2(Builder $builder, $request)
+   // {
+   //     return (new CheckinItemFilter($request->only('contact'), $request->only('warehouse')))->apply($builder);
+   // }
 
     public function scopeFromCategory($query, $category)
     {
