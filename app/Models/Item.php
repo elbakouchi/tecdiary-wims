@@ -75,7 +75,7 @@ class Item extends Model
         return $this->forceDelete();
     }
 
-    public function scopeFilter(Builder $builder, $request)
+    public function scopeCustomFilter(Builder $builder, $request)
     {
         return (new CheckinItemFilter($request->only('contact'), $request->only('warehouse')))->apply($builder);
     }
