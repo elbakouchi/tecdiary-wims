@@ -7,7 +7,7 @@ use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class ItemSearchFitler extends AbstractEloquentFilter
 {
-    protected $search;
+    public $search;
 
     public function __constructor($search)
     {
