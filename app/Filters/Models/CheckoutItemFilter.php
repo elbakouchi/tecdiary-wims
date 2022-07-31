@@ -19,6 +19,6 @@ class CheckoutItemFilter extends AbstractEloquentFilter
     
     public function apply(Builder $query): Builder
     {
-        return $query->where('checkout_items.contact_id', '=', "$this->contact")->orWhere('checkout_items.warehouse_id', '=', "$this->warehouse");
+        return $query->where('checkout_items.warehouse_id', '=', "$this->warehouse");
     }
 }
