@@ -8,8 +8,8 @@ use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class CheckinItemFilter extends AbstractEloquentFilter
 {
-    protected $contact;
-    protected $warehouse;
+    public $contact;
+    public $warehouse;
 
     public function __constructor($contact, $warehouse)
     {
