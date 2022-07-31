@@ -32,13 +32,13 @@ class ItemCollection extends ResourceCollection
                 'has_variants'     => $item->has_variants == 1 ? true : false,
                 'track_weight'     => $item->track_weight == 1 ? true : false,
                 'track_quantity'   => $item->track_quantity == 1 ? true : false,
-                'user'             => $item->whenLoaded('user'),
-                'unit'             => $item->whenLoaded('unit'),
-                'stock'            => $item->whenLoaded('stock'),
-                'serials'          => $item->whenLoaded('serials'),
-                'all_stock'        => $item->whenLoaded('allStock'),
-                'categories'       => $item->whenLoaded('categories'),
-                'variations'       => $item->whenLoaded('variations'),
+                //'user'             => $item->whenLoaded('user'),
+                //'unit'             => $item->whenLoaded('unit'),
+                //'stock'            => $item->whenLoaded('stock'),
+                //'serials'          => $item->whenLoaded('serials'),
+                //'all_stock'        => $item->whenLoaded('allStock'),
+                //'categories'       => $item->whenLoaded('categories'),
+                //'variations'       => $item->whenLoaded('variations'),
             ];
         });
     }
