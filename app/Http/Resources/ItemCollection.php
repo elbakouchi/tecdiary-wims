@@ -13,7 +13,7 @@ class ItemCollection extends ResourceCollection
         //dd($request);
         //return parent::toArray($request);
         return $this->collection->transform(function($item){
-            dd($item);
+            //dd($item);
             return [
                 'id'               => $item->id,
                 'sku'              => $item->sku,
