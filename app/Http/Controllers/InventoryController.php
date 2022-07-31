@@ -33,8 +33,8 @@ class InventoryController extends Controller
         try{
             $filters = EloquentFilters::make([
                 new ItemSearchFitler($request->only('search')),
-                new CheckinItemFilter($request->only('contact'), $request->only('warehouse')),
-                new CheckoutItemFilter($request->only('contact'), $request->only('warehouse'))
+               // new CheckinItemFilter($request->only('contact'), $request->only('warehouse')),
+               // new CheckoutItemFilter($request->only('contact'), $request->only('warehouse'))
             ]);
             
             //$items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
