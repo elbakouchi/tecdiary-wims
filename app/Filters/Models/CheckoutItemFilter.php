@@ -19,6 +19,10 @@ class CheckoutItemFilter extends AbstractEloquentFilter
     
     public function apply(Builder $query): Builder
     {
-        return $query->where('checkout_items.warehouse_id', '=', "$this->warehouse");
+        if(!is_null($this->warehouse))$query->join('checkout_items', 'checkout_items.item_id', '=', 'items.id')
+                                            ->join('checkouts', 'checkouts.id', '=', 'checkout_items.checkout_id')
+                                            ->where('checkouts.warehouse_id', '=', "$this->warehouse");
+
+        return $query->withoutGlobalScope('account');              
     }
 }
