@@ -17,7 +17,7 @@ class ItemSearchFitler extends AbstractEloquentFilter
 
     public function apply(Builder $query): Builder
     {
-        dd($query, $this->search);
+        //dd($query, $this->search);
         return $query->where('items.name', 'like', "$this->search%")
                    ->orWhere('items.sku', 'like', "$this->search%")
                    ->orWhere('items.code', 'like', "$this->search%")
