@@ -29,6 +29,7 @@ class ItemResource extends JsonResource
             'user'             => $this->whenLoaded('user'),
             'unit'             => $this->whenLoaded('unit'),
             'stock'            => $this->whenLoaded('stock'),
+            'stock_trails'     => $this->whenLoaded('stockTrails'),
             'serials'          => $this->whenLoaded('serials'),
             'all_stock'        => $this->whenLoaded('allStock'),
             'categories'       => $this->whenLoaded('categories'),
