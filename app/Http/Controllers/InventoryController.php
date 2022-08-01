@@ -31,13 +31,14 @@ class InventoryController extends Controller
     public function inventory(Request $request)
     {
         //dd($request->query('search'));
-        $itemFilter = new ItemSearchFitler();
-        $itemFilter->search = $request->query('search');
-        $checkinItemFilter= new CheckinItemFilter();
-        $checkinItemFilter->contact = $request->query('contact');
-        $checkinItemFilter->warehouse = $request->query('warehouse');
-
+        
         try{
+            $itemFilter = new ItemSearchFitler();
+            $itemFilter->search = $request->query('search');
+            $checkinItemFilter= new CheckinItemFilter();
+            $checkinItemFilter->contact = $request->query('contact');
+            $checkinItemFilter->warehouse = $request->query('warehouse');
+            
             $filters = EloquentFilters::make([
                 $itemFilter, $checkinItemFilter
                // new CheckoutItemFilter($request->only('contact'), $request->only('warehouse'))

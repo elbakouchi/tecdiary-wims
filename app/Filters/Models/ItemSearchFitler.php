@@ -18,6 +18,7 @@ class ItemSearchFitler extends AbstractEloquentFilter
     public function apply(Builder $query): Builder
     {
         //dd($query, $this->search);
+        if(!is_null($this->search) && !empty($this->search))
         return $query->where('items.name', 'like', "$this->search%")
                    ->orWhere('items.sku', 'like', "$this->search%")
                    ->orWhere('items.code', 'like', "$this->search%")
@@ -26,5 +27,6 @@ class ItemSearchFitler extends AbstractEloquentFilter
                    ->orWhere('items.rack_location', 'like', "$this->search%")
                    //->orWhere('items.account_id', '=', 1)
                    ->withoutGlobalScope('account');
+        else return $query;           
     }
 }
