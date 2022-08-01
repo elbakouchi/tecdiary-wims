@@ -35,6 +35,7 @@ class ItemCollection extends ResourceCollection
                 'user'             => $item->whenLoaded('user'),
                 'unit'             => $item->whenLoaded('unit'),
                 'stock'            => $item->whenLoaded('stock'),
+                'stock_trails'     => $item->whenLoaded('stockTrails'),
                 'serials'          => $item->whenLoaded('serials'),
                 'all_stock'        => $item->whenLoaded('allStock'),
                 'categories'       => $item->whenLoaded('categories'),
