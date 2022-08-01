@@ -180,7 +180,7 @@ export default {
 
   methods: {
     getWarehouseName(warehouseId){
-      let warehouse = find(warehouses, {id:warehouseId});
+      let warehouse = find(this.warehouses, {id:warehouseId});
       return warehouse.name;
     },
     showDetails(item) {
