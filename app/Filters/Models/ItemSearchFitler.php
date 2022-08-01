@@ -11,7 +11,6 @@ class ItemSearchFitler extends AbstractEloquentFilter
 
     public function __constructor($search)
     {
-        dd($search);
         $this->search = $search;
     }
 

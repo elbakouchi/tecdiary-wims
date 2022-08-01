@@ -25,8 +25,8 @@ class CheckinItemFilter extends AbstractEloquentFilter
         if(!is_null($this->contact) && !is_null($this->warehouse))
                      $query->where('checkins.contact_id', '=', "$this->contact")
                      ->andWhere('checkins.warehouse_id', '=', "$this->warehouse");
-        else if(!is_null($this->contact))  $query->where('checkins.contact_id', '=', "$this->contact");
-        else if(!is_null($this->warehouse))$query->where('checkins.warehouse_id', '=', "$this->warehouse");
+        else if(!is_null($this->contact) && is_null($this->warehouse))  $query->where('checkins.contact_id', '=', "$this->contact");
+        else if(is_null($this->contact) &&  !is_null($this->warehouse))$query->where('checkins.warehouse_id', '=', "$this->warehouse");
 
         return $query->withoutGlobalScope('account');              
     }
