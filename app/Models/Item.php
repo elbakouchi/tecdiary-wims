@@ -24,7 +24,7 @@ class Item extends Model
         'has_variants', 'variants', 'has_serials', 'sku', 'details', 'unit_id', 'account_id', 'extra_attributes',
     ];
 
-    protected $with = ['unit:id,code,name', 'unit.subunits', 'stock:id,quantity', 'stockTrails'];
+    protected $with = ['unit:id,code,name', 'unit.subunits', 'stock:id,quantity', 'stockTrails:id,quantity'];
 
     public function allStock()
     {
