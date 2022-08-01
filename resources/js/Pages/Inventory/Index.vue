@@ -54,7 +54,7 @@
               {{ item.name }}
             </td>
             <td class="border-t px-6 py-4">
-              {{ getWarehouseName(item.warehouse_id) }}
+              {{ getWarehouseName(1) }}
             </td>
             <td class="border-t px-6 py-4">
               {{ item.rack_location }}
