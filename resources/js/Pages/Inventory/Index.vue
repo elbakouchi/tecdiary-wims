@@ -35,7 +35,8 @@
             <th class="px-6 pt-6 pb-4">{{ $t('SKU') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $t('Code') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $t('Name') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $t('Rack location') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Warehouse') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Quantity') }}</th>
           </tr>
           <tr
             :key="item.id"
@@ -51,6 +52,9 @@
             </td>
             <td class="border-t px-6 py-4">
               {{ item.name }}
+            </td>
+            <td class="border-t px-6 py-4">
+              {{ getWarehouseName(item.warehouse_id) }}
             </td>
             <td class="border-t px-6 py-4">
               {{ item.rack_location }}
@@ -120,6 +124,8 @@
 import pickBy from 'lodash/pickBy';
 import throttle from 'lodash/throttle';
 import mapValues from 'lodash/mapValues';
+import map from 'lodash/map';
+import find from 'lodash/find';
 import Modal from '@/Jetstream/Modal.vue';
 import AutoComplete from '@/Shared/AutoComplete.vue';
 import TecButton from '@/Jetstream/Button.vue';
@@ -173,6 +179,10 @@ export default {
   },
 
   methods: {
+    getWarehouseName(warehouseId){
+      let warehouse = find(warehouses, {id:warehouseId});
+      return warehouse.name;
+    },
     showDetails(item) {
       this.item = item;
       this.details = true;
