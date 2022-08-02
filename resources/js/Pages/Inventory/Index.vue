@@ -179,9 +179,13 @@ export default {
   },
 
   methods: {
+    getQuantitySum(item){
+
+    },
     getWarehouseName(warehouseId){
       console.log(warehouseId);
-      let warehouse = find(this.warehouses, {value:warehouseId});
+      let warehouse = find(this.warehouses, {warehouseId});
+      console.log(warehouse, warehouse.name);
       return warehouse.name;
     },
     showDetails(item) {
