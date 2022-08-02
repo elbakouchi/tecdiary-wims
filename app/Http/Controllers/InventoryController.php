@@ -46,7 +46,7 @@ class InventoryController extends Controller
             
             //$items = new ItemCollection(Item::filter($request->only('search'))->orderByDesc('id')->paginate());
             
-            $items = new ItemCollection(Item::with(['checkinItems','stock','stockTrails'])->filter2($filters)->paginate());
+            $items = new ItemCollection(Item::with(['checkinItems', 'checkoutItems', 'stock','stockTrails'])->filter2($filters)->paginate());
             $checkins = array('data'=>[]);
             $error ="It's all good";
             
