@@ -41,6 +41,7 @@ class ItemCollection extends ResourceCollection
                 'categories'       => $item->whenLoaded('categories'),
                 'variations'       => $item->whenLoaded('variations'),
                 'checkinItems'     => $item->whenLoaded('checkinItems'),
+                'checkoutItems'     => $item->whenLoaded('checkoutItems'),
             ];
         });
     }
