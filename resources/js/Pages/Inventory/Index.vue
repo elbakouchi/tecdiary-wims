@@ -188,11 +188,11 @@ export default {
         console.log(warehouseId);
         var warehouse = find(this.warehouses, {value:arehouseId});
         console.log(warehouse, warehouse.name);
-        return warehouse
+        return warehouse.label;
       }catch(e){
           var warehouse = find(this.warehouses, {value:1});
           console.log(warehouse);
-          return warehouse.name;
+          return warehouse.label;
       }
       return "test";
     },
