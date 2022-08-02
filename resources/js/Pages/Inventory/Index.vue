@@ -182,10 +182,17 @@ export default {
 
     },
     getWarehouseName(warehouseId){
-      console.log(warehouseId);
-      let warehouse = find(this.warehouses, {warehouseId});
-      console.log(warehouse, warehouse.name);
-      return warehouse.name;
+      try{
+        console.log(warehouseId);
+        var warehouse = find(this.warehouses, {warehouseId});
+        console.log(warehouse, warehouse.name);
+        return warehouse
+      }catch(e){
+          var warehouse = find(this.warehouses, {id:1});
+          console.log(warehouse);
+          return warehouse.name;
+      }
+      return "test";
     },
   },
   methods: {
