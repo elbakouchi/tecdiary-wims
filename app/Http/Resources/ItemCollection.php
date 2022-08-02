@@ -40,6 +40,7 @@ class ItemCollection extends ResourceCollection
                 'all_stock'        => $item->whenLoaded('allStock'),
                 'categories'       => $item->whenLoaded('categories'),
                 'variations'       => $item->whenLoaded('variations'),
+                'checkinItems'     => $item->whenLoaded('checkinItems'),
             ];
         });
     }
