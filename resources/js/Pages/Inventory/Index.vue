@@ -184,11 +184,11 @@ export default {
     getWarehouseName(warehouseId){
       try{
         console.log(warehouseId);
-        var warehouse = find(this.warehouses, {warehouseId});
+        var warehouse = find(this.warehouses, {value:arehouseId});
         console.log(warehouse, warehouse.name);
         return warehouse
       }catch(e){
-          var warehouse = find(this.warehouses, {id:1});
+          var warehouse = find(this.warehouses, {value:1});
           console.log(warehouse);
           return warehouse.name;
       }
