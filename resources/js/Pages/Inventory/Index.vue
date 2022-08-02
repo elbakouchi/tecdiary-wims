@@ -177,9 +177,8 @@ export default {
       deep: true,
     },
   },
-
-  methods: {
-    getQuantitySum(item){
+  computed: {
+     getQuantitySum(item){
 
     },
     getWarehouseName(warehouseId){
@@ -188,6 +187,8 @@ export default {
       console.log(warehouse, warehouse.name);
       return warehouse.name;
     },
+  },
+  methods: {
     showDetails(item) {
       this.item = item;
       this.details = true;
