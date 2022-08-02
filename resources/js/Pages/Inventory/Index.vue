@@ -181,7 +181,9 @@ export default {
      getQuantitySum(item){
 
     },
-    getWarehouseName(warehouseId){
+  },
+  methods: {
+     getWarehouseName(warehouseId){
       try{
         console.log(warehouseId);
         var warehouse = find(this.warehouses, {value:arehouseId});
@@ -194,8 +196,6 @@ export default {
       }
       return "test";
     },
-  },
-  methods: {
     showDetails(item) {
       this.item = item;
       this.details = true;
