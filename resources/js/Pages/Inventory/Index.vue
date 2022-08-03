@@ -70,7 +70,7 @@
              {{ getQuantitySum(item.checkoutItems) }}
             </td>
             <td class="border-t px-6 py-4">
-             {{ getQuantitySum(item.stocks) }}
+             {{ getQuantitySum(item.stock) }}
             </td>
           </tr>
           <tr v-if="items.data.length === 0">
