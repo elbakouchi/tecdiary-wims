@@ -194,7 +194,7 @@ export default {
  
   methods: {
     getQuantitySum(items){
-      quantities = reduce(items, function(quantities, value, key){
+      var quantities = reduce(items, function(quantities, value, key){
           if(key==='quantity')
           quantities.push(value);
       }, []);
