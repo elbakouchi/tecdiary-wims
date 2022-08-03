@@ -198,6 +198,7 @@ export default {
       var quantities = reduce(items, function(quantities, value, key){
           console.log(quantities, value.quantity, key);
            quantities.push(parseInt(value.quantity));
+           return quantities;
       }, []);
       console.log(quantities);
       return reduce(quantities, function(sum, n){
