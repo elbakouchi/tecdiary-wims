@@ -196,8 +196,8 @@ export default {
     getQuantitySum(items){
       console.log(items);
       var quantities = reduce(items, function(quantities, value, key){
-          console.log(quantities, value, key);
-           quantities.push(value.quantity);
+          console.log(quantities, value.quantity, key);
+           quantities.push(parseInt(value.quantity));
       }, []);
       console.log(quantities);
       return reduce(quantities, function(sum, n){
