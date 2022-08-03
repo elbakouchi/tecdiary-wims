@@ -39,9 +39,9 @@
             <th class="px-6 pt-6 pb-4">{{ $t('Warehouse') }}</th>
             -->
 
-            <th class="px-6 pt-6 pb-4">{{ $t('Checkins Qantity') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $t('Checkouts Quantity') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $t('Stock Quantity') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Checkins quantity') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Checkouts quantity') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Stock quantity') }}</th>
           </tr>
           <tr
             :key="item.id"
