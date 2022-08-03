@@ -35,8 +35,13 @@
             <th class="px-6 pt-6 pb-4">{{ $t('SKU') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $t('Code') }}</th>
             <th class="px-6 pt-6 pb-4">{{ $t('Name') }}</th>
+            <!--
             <th class="px-6 pt-6 pb-4">{{ $t('Warehouse') }}</th>
-            <th class="px-6 pt-6 pb-4">{{ $t('Quantity') }}</th>
+            -->
+
+            <th class="px-6 pt-6 pb-4">{{ $t('Checkins Qantity') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Checkouts Quantity') }}</th>
+            <th class="px-6 pt-6 pb-4">{{ $t('Stock Quantity') }}</th>
           </tr>
           <tr
             :key="item.id"
@@ -53,11 +58,19 @@
             <td class="border-t px-6 py-4">
               {{ item.name }}
             </td>
+            <!--
             <td class="border-t px-6 py-4">
-              {{ getWarehouseName(1) }}
+              {{ getWarehouseName(item.warehouse_id) }}
+            </td>
+            -->
+             <td class="border-t px-6 py-4">
+              {{ getQuantitySum(item.checkinItems) }}
             </td>
             <td class="border-t px-6 py-4">
-              {{ item.rack_location }}
+             {{ getQuantitySum(item.checkoutItems) }}
+            </td>
+            <td class="border-t px-6 py-4">
+             {{ getQuantitySum(item.stocks) }}
             </td>
           </tr>
           <tr v-if="items.data.length === 0">
@@ -125,6 +138,7 @@ import pickBy from 'lodash/pickBy';
 import throttle from 'lodash/throttle';
 import mapValues from 'lodash/mapValues';
 import map from 'lodash/map';
+import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import Modal from '@/Jetstream/Modal.vue';
 import AutoComplete from '@/Shared/AutoComplete.vue';
@@ -177,12 +191,17 @@ export default {
       deep: true,
     },
   },
-  computed: {
-     getQuantitySum(item){
-
-    },
-  },
+ 
   methods: {
+    getQuantitySum(items){
+      quantities = reduce(items, function(quantities, value, key){
+          if(key==='quantity')
+          quantities.push(value);
+      }, []);
+      return reduce(quantities, function(sum, n){
+          return sum + n;
+      }, 0);
+    },
      getWarehouseName(warehouseId){
       try{
         console.log(warehouseId);
