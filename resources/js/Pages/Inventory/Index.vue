@@ -197,7 +197,7 @@ export default {
       console.log(items);
       var quantities = reduce(items, function(quantities, value, key){
           console.log(quantities, value, key);
-          if(key==='quantity') quantities.push(value);
+           quantities.push(value.quantity);
       }, []);
       console.log(quantities);
       return reduce(quantities, function(sum, n){
